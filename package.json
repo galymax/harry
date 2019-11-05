@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "sass": "sass --watch scss/style.scss:css/style.css",
-    "live": "live-server"
+    "live": "live-server",
+    "deploy": "gh-pages -d ."
   },
   "author": "",
   "license": "ISC"
