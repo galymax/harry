@@ -1,0 +1,68 @@
+/* hover effect mixin */
+/*
+* params:
+* - duration
+* - easing
+* - img-initial
+* - img-hover
+*/
+
+@mixin image-transition($img-initial, $img-hover, $easing:cubic-bezier(1, -1, 0, 2), $duration:0.4s) {
+	background: url($img-hover) center center;
+    background-size: cover;
+    position: relative;
+    
+    &:after {
+        background: url($img-initial) center center;
+        background-size: cover;
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        bottom: 0;
+        transition: $duration $easing;
+        clip-path: polygon(20% 0%, 0% 0%, 0% 50%, 0% 100%, 20% 100%, 50% 100%, 100% 100%, 100% 80%, 100% 50%, 100% 0%, 80% 0%, 50% 0%);
+    }
+
+    &:hover {
+        &:after {
+            clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+        }
+    }
+}
+
+@mixin awesome-hover($bg-image, $easing:cubic-bezier(1, -1, 0, 2), $duration:0.4s) {
+	background: url($bg-image) center center;
+    background-size: cover;
+    transition: $duration $easing;
+    clip-path: url("../images/clip.svg#myClip");
+    /*clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);*/
+
+    &:hover {
+        clip-path: polygon(0% 5%, 10% 100%, 90% 100%, 100% 5%);
+    }
+}
+
+div {
+    @include awesome-hover("https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/Harry-Potter-1-.jpg");
+    width: 280px;
+	height: 280px;
+}
+
+/*div {
+    @include image-transition(
+        "https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/Harry-Potter-1-.jpg",
+        "https://i.pinimg.com/originals/fb/db/12/fbdb12e819705c61a00d434b4c22ba1e.jpg"
+    );
+    width: 280px;
+	height: 280px;
+}*/
+
+/* Center the demo */
+html, body { height: 100%; }
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

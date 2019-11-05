@@ -1,0 +1,41 @@
+/* hover effect mixin */
+/*
+* params:
+* - duration
+* - easing
+* - img-initial
+* - img-hover
+*/
+div {
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/Harry-Potter-1-.jpg") center center;
+  background-size: cover;
+  transition: 0.4s cubic-bezier(1, -1, 0, 2);
+  clip-path: url("../images/clip.svg#myClip");
+  /*clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);*/
+  width: 280px;
+  height: 280px;
+}
+div:hover {
+  clip-path: polygon(0% 5%, 10% 100%, 90% 100%, 100% 5%);
+}
+
+/*div {
+    @include image-transition(
+        "https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/Harry-Potter-1-.jpg",
+        "https://i.pinimg.com/originals/fb/db/12/fbdb12e819705c61a00d434b4c22ba1e.jpg"
+    );
+    width: 280px;
+	height: 280px;
+}*/
+/* Center the demo */
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*# sourceMappingURL=style.css.map */
